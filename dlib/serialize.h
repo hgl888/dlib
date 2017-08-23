@@ -62,6 +62,7 @@
         - std::string
         - std::wstring
         - std::vector
+        - std::array
         - std::deque
         - std::map
         - std::set
@@ -80,6 +81,7 @@
         - std::string
         - std::wstring
         - std::vector
+        - std::array
         - std::deque
         - std::map
         - std::set
@@ -97,7 +99,7 @@
     Note that you can deserialize an integer value to any integral type (except for a 
     char type) if its value will fit into the target integer type.  I.e.  the types 
     short, int, long, unsigned short, unsigned int, unsigned long, and dlib::uint64 
-    can all receive serialized data from each other so long as the actual serizlied 
+    can all receive serialized data from each other so long as the actual serialized 
     value fits within the receiving integral type's range.
 
     Also note that for any container to be serializable the type of object it contains 
@@ -145,9 +147,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <array>
 #include <deque>
 #include <complex>
 #include <map>
+#include <memory>
 #include <set>
 #include <limits>
 #include "uintn.h"
@@ -157,7 +161,6 @@
 #include "unicode.h"
 #include "byte_orderer.h"
 #include "float_details.h"
-#include "smart_pointers/shared_ptr.h"
 
 namespace dlib
 {
@@ -1366,6 +1369,64 @@ namespace dlib
 // ----------------------------------------------------------------------------------------
 
     template <
+        typename T,
+        size_t N
+        >
+    inline void serialize (
+        const std::array<T,N>& array,
+        std::ostream& out
+    )
+    {
+        typedef T c_array_type[N];
+        serialize(*(const c_array_type*)array.data(), out);
+    }
+
+    template <
+        typename T,
+        size_t N
+        >
+    inline void deserialize (
+        std::array<T,N>& array,
+        std::istream& in 
+    )
+    {
+        typedef T c_array_type[N];
+        deserialize(*(c_array_type*)array.data(), in);
+    }
+
+    template <
+        typename T
+        >
+    inline void serialize (
+        const std::array<T,0>& /*array*/,
+        std::ostream& out
+    )
+    {
+        size_t N = 0;
+        serialize(N, out);
+    }
+
+    template <
+        typename T
+        >
+    inline void deserialize (
+        std::array<T,0>& /*array*/,
+        std::istream& in 
+    )
+    {
+        size_t N;
+        deserialize(N, in);
+        if (N != 0)
+        {
+            std::ostringstream sout;
+            sout << "Expected std::array of size 0 but found a size of " << N;
+            throw serialization_error(sout.str());
+        }
+    }
+
+// ----------------------------------------------------------------------------------------
+
+    template <
         typename T
         >
     inline void serialize (
@@ -1429,7 +1490,7 @@ namespace dlib
         }
 
     private:
-        shared_ptr<std::ofstream> fout;
+        std::shared_ptr<std::ofstream> fout;
     };
 
     class proxy_deserialize 
@@ -1452,7 +1513,7 @@ namespace dlib
         }
 
     private:
-        shared_ptr<std::ifstream> fin;
+        std::shared_ptr<std::ifstream> fin;
     };
 
     inline proxy_serialize serialize(const std::string& filename)
