@@ -1,0 +1,163 @@
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cmake_minimum_required(VERSION 3.4.1)
+
+message("Checking CMAKE_SYSTEM_NAME = '${CMAKE_SYSTEM_NAME}'")
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  add_definitions(-DOS_OSX)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  add_definitions(-DOS_LINUX)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+  add_definitions(-DOS_WIN)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Android")
+  add_definitions(-DOS_ANDROID)
+  message("Checking CMAKE_ABI_NAME = '${CMAKE_ANDROID_ARCH_ABI}'")
+else()
+  message("OS not detected.")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Werror")
+
+## Define each subfolders
+set(JNI_DETECTION_INCLUDE jni/jni_detections)
+set(JNI_DETECTION_SRC jni/jni_detections)
+set(JNI_COMMON_INCLUDE jni)
+set(JNI_COMMON_SRC jni/jni_common)
+set(DLIB_DIR dlib)
+set(EXT_DIR third_party)
+set(GLOG_INCLUDE_DIR ${EXT_DIR}/miniglog)
+set(OPENCV_PREBUILT ${EXT_DIR}/OpenCV-android-sdk/sdk/native/jni)
+
+# Opencv and it will use static import
+set(ANDROID_NDK_ABI_NAME ${CMAKE_ANDROID_ARCH_ABI})
+include(${OPENCV_PREBUILT}/OpenCVConfig.cmake)
+
+# Include headers
+include_directories(${DLIB_DIR} ${OpenCV_INCLUDE_DIRS} ${GLOG_INCLUDE_DIR} ${JNI_COMMON_INCLUDE} ${JNI_DETECTION_INCLUDE} include)
+
+# Creates and names a library, sets it as either STATIC
+# or SHARED, and provides the relative paths to its source code.
+# You can define multiple libraries, and CMake builds it for you.
+# Gradle automatically packages shared libraries with your APK.
+
+add_library( # Sets the name of the library.
+             native-lib
+
+             # Sets the library as a shared library.
+             SHARED
+
+             # Provides a relative path to your source file(s).
+             # Associated headers in the same location as their source
+             # file are automatically included.
+             ${DLIB_DIR}/dlib/cpp/cpp/native-lib.cpp
+ )
+
+
+add_library(dlib.cpp
+             SHARED
+            ${DLIB_DIR}/dlib/cpp/cpp/dlib.cpp
+ )
+
+add_library(matrix.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/matrix.cpp
+ )
+
+add_library(vector.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/vector.cpp
+ )
+
+add_library(svm_c_trainer.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/svm_c_trainer.cpp
+ )
+
+add_library(svm_rank_trainer.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/svm_rank_trainer.cpp
+ )
+
+add_library(decision_functions.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/decision_functions.cpp
+ )
+
+add_library(other.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/other.cpp
+ )
+
+add_library(basic.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/basic.cpp
+ )
+
+add_library(cca.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/cca.cpp
+ )
+
+add_library(sequence_segmenter.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/sequence_segmenter.cpp
+ )
+
+add_library(svm_struct.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/svm_struct.cpp
+ )
+
+add_library(image.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/image.cpp
+ )
+
+add_library(rectangles.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/rectangles.cpp
+ )
+
+add_library(object_detection.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/object_detection.cpp
+ )
+
+add_library(shape_predictor.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/shape_predictor.cpp
+ )
+
+add_library(correlation_tracker.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/correlation_tracker.cpp
+ )
+
+add_library(face_recognition.cpp
+             SHARED
+             ${DLIB_DIR}/dlib/cpp/cpp/face_recognition.cpp
+ )
+
+
+# Searches for a specified prebuilt library and stores the path as a
+# variable. Because system libraries are included in the search path by
+# default, you only need to specify the name of the public NDK library
+# you want to add. CMake verifies that the library exists before
+# completing its build.
+
+find_library( # Sets the name of the path variable.
+              log-lib
+
+              # Specifies the name of the NDK library that
+              # you want CMake to locate.
+              log )
+
+# Specifies libraries CMake should link to your target library. You
+# can link multiple libraries, such as libraries you define in the
+# build script, prebuilt third-party libraries, or system libraries.
+
+target_link_libraries( # Specifies the target library.
+                       native-lib
+
+                       # Links the target library to the log library
+                       # included in the NDK.
+                       ${log-lib} )

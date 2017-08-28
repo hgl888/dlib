@@ -3746,7 +3746,7 @@ namespace dlib
         perspective_window(
         ) : disp(*this) 
         {
-            set_size(100,100);
+            set_size(480,320);
             on_window_resized();
             show();
         }
