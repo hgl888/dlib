@@ -7,6 +7,8 @@
 
 #include "cpu_dlib.h"
 #include "tensor_tools.h"
+#include "../image_transforms/interpolation.h"
+#include "../threads.h"
 
 namespace dlib
 {
@@ -1478,7 +1480,11 @@ namespace dlib
 
         void resize_bilinear (
             tensor& dest,
-            const tensor& src
+            long dest_row_stride,
+            long dest_channel_stride,
+            const tensor& src,
+            long src_row_stride,
+            long src_channel_stride
         )
         {
             DLIB_CASSERT(is_same_object(dest, src)==false);
@@ -1490,46 +1496,23 @@ namespace dlib
 
             const float* s = src.host();
             float* d = dest.host();
-            const float x_scale = (src.nc()-1)/(float)std::max<long>((dest.nc()-1),1);
-            const float y_scale = (src.nr()-1)/(float)std::max<long>((dest.nr()-1),1);
-            for (long samp = 0; samp < dest.num_samples(); ++samp)
+
+            parallel_for(0, dest.k()*dest.num_samples(), [&](long i)
             {
-                for (long k = 0; k < dest.k(); ++k)
-                {
-                    for (long r = 0; r < dest.nr(); ++r)
-                    {
-                        const float y = r*y_scale;
-                        const long top    = static_cast<long>(std::floor(y));
-                        const long bottom = std::min(top+1, src.nr()-1);
-                        const float tb_frac = y - top;
-                        for (long c = 0; c < dest.nc(); ++c)
-                        {
-                            const float x = c*x_scale;
-                            const long left   = static_cast<long>(std::floor(x));
-                            const long right  = std::min(left+1, src.nc()-1);
-                            const float lr_frac = x - left;
+                auto simg = sub_image(s+i*src_channel_stride, src.nr(), src.nc(), src_row_stride);
+                auto dimg = sub_image(d+i*dest_channel_stride, dest.nr(), dest.nc(), dest_row_stride);
 
-                            float tl = s[top*src.nc()+left];
-                            float tr = s[top*src.nc()+right];
-                            float bl = s[bottom*src.nc()+left];
-                            float br = s[bottom*src.nc()+right];
-
-                            float temp = (1-tb_frac)*((1-lr_frac)*tl + lr_frac*tr) + 
-                                tb_frac*((1-lr_frac)*bl + lr_frac*br);
-
-                            d[r*dest.nc()+c] = temp;
-                        }
-                    }
-
-                    d += dest.nr()*dest.nc();
-                    s += src.nr()*src.nc();
-                }
-            }
+                resize_image(simg, dimg);
+            });
         }
 
         void resize_bilinear_gradient (
             tensor& grad,
-            const tensor& gradient_input
+            long grad_row_stride,
+            long grad_channel_stride,
+            const tensor& gradient_input,
+            long gradient_input_row_stride,
+            long gradient_input_channel_stride
         )
         {
             DLIB_CASSERT(is_same_object(grad, gradient_input)==false);
@@ -1560,17 +1543,17 @@ namespace dlib
                             const long right  = std::min(left+1, grad.nc()-1);
                             const float lr_frac = x - left;
 
-                            const float tmp = gi[r*gradient_input.nc()+c];
+                            const float tmp = gi[r*gradient_input_row_stride+c];
 
-                            g[top*grad.nc()+left]     += tmp*(1-tb_frac)*(1-lr_frac);
-                            g[top*grad.nc()+right]    += tmp*(1-tb_frac)*(lr_frac);
-                            g[bottom*grad.nc()+left]  += tmp*(tb_frac)*(1-lr_frac);
-                            g[bottom*grad.nc()+right] += tmp*(tb_frac)*(lr_frac);
+                            g[top*grad_row_stride+left]     += tmp*(1-tb_frac)*(1-lr_frac);
+                            g[top*grad_row_stride+right]    += tmp*(1-tb_frac)*(lr_frac);
+                            g[bottom*grad_row_stride+left]  += tmp*(tb_frac)*(1-lr_frac);
+                            g[bottom*grad_row_stride+right] += tmp*(tb_frac)*(lr_frac);
                         }
                     }
 
-                    g += grad.nr()*grad.nc();
-                    gi += gradient_input.nr()*gradient_input.nc();
+                    g += grad_channel_stride;
+                    gi += gradient_input_channel_stride;
                 }
             }
         }
