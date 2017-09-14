@@ -1,43 +1,3 @@
-// The contents of this file are in the public domain. See LICENSE_FOR_EXAMPLE_PROGRAMS.txt
-/*
-
-    This example program shows how to find frontal human faces in an image and
-    estimate their pose.  The pose takes the form of 68 landmarks.  These are
-    points on the face such as the corners of the mouth, along the eyebrows, on
-    the eyes, and so forth.  
-    
-
-
-    This face detector is made using the classic Histogram of Oriented
-    Gradients (HOG) feature combined with a linear classifier, an image pyramid,
-    and sliding window detection scheme.  The pose estimator was created by
-    using dlib's implementation of the paper:
-        One Millisecond Face Alignment with an Ensemble of Regression Trees by
-        Vahid Kazemi and Josephine Sullivan, CVPR 2014
-    and was trained on the iBUG 300-W face landmark dataset.  
-
-    Also, note that you can train your own models using dlib's machine learning
-    tools.  See train_shape_predictor_ex.cpp to see an example.
-
-    
-
-
-    Finally, note that the face detector is fastest when compiled with at least
-    SSE2 instructions enabled.  So if you are using a PC with an Intel or AMD
-    chip then you should enable at least SSE2 instructions.  If you are using
-    cmake to compile this program you can enable them by using one of the
-    following commands when you create the build project:
-        cmake path_to_dlib_root/examples -DUSE_SSE2_INSTRUCTIONS=ON
-        cmake path_to_dlib_root/examples -DUSE_SSE4_INSTRUCTIONS=ON
-        cmake path_to_dlib_root/examples -DUSE_AVX_INSTRUCTIONS=ON
-    This will set the appropriate compiler options for GCC, clang, Visual
-    Studio, or the Intel compiler.  If you are using another compiler then you
-    need to consult your compiler's manual to determine how to enable these
-    instructions.  Note that AVX is the fastest but requires a CPU from at least
-    2011.  SSE4 is the next fastest and is supported by most current machines.  
-*/
-
-
 #include <dlib/image_processing/frontal_face_detector.h>
 #include <dlib/image_processing/render_face_detections.h>
 #include <dlib/image_processing.h>
@@ -50,7 +10,7 @@ using namespace std;
 
 // ----------------------------------------------------------------------------------------
 
-int main(int argc, char** argv)
+int main_lbp(int argc, char** argv)
 {  
     try
     {
@@ -86,12 +46,21 @@ int main(int argc, char** argv)
             array2d<rgb_pixel> img;
             load_image(img, argv[i]);
             // Make the image larger so we can detect small faces.
-            pyramid_up(img);
+            //pyramid_up(img);
 
-            // Now tell the face detector to give us a list of bounding boxes
-            // around all the faces in the image.
+			std::vector<std::vector<double>> features;//storing features for all images
+			dlib::rectangle rec(0, 0, img.nc(), img.nr());
+			std::vector<double> feat;//for a single image
+			full_object_detection full_detection = sp(img, rec);
+
+			//extract_highdim_face_lbp_descriptors(img, full_detection, feat); //dlib's function, storing extracted info in 'feat'
+
+			//features.push_back(feat);
+
+   //         // Now tell the face detector to give us a list of bounding boxes
+   //         // around all the faces in the image.
             std::vector<rectangle> dets = detector(img);
-            cout << "Number of faces detected: " << dets.size() << endl;
+   //         cout << "Number of faces detected: " << dets.size() << endl;
 
             // Now we will go ask the shape_predictor to tell us the pose of
             // each face we detected.
@@ -99,6 +68,7 @@ int main(int argc, char** argv)
             for (unsigned long j = 0; j < dets.size(); ++j)
             {
                 full_object_detection shape = sp(img, dets[j]);
+				//full_object_detection shape = sp(img, rec);
                 cout << "number of parts: "<< shape.num_parts() << endl;
                 cout << "pixel position of first part:  " << shape.part(0) << endl;
                 cout << "pixel position of second part: " << shape.part(1) << endl;
@@ -107,7 +77,6 @@ int main(int argc, char** argv)
                 // put them on the screen.
                 shapes.push_back(shape);
             }
-			
 
             // Now let's view our face poses on the screen.
             win.clear_overlay();

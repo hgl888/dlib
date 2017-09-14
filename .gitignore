@@ -8,3 +8,8 @@ dist
 *.egg-info/
 
 cmake-build-debug/
+data/dlib_face_detection_dataset/Data/flickr/0/image15497.jpg_RESAMPLED_a915ca926a88fcea.png
+data/
+build2017/
+facedetect/face_detector.dir/
+facedetect/fast_face_detector.dir/
