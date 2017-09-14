@@ -13,3 +13,4 @@ data/
 build2017/
 facedetect/face_detector.dir/
 facedetect/fast_face_detector.dir/
+facedetect/facetracker.dir/

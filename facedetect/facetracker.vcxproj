@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2C639C83-A36A-4B04-8252-D18046DCCA99}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>facetracker</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\MyWorks\github\dlib\build\examples\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">facetracker.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">facetracker</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\MyWorks\github\dlib\build\examples\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">facetracker.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">facetracker</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\MyWorks\github\dlib\build\examples\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">facetracker.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">facetracker</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\MyWorks\github\dlib\build\examples\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">facetracker.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">facetracker</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;./facetracker;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DLIB_HAVE_SSE2;DLIB_JPEG_SUPPORT;DLIB_PNG_SUPPORT;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DLIB_HAVE_SSE2;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\build\dlib\Debug\dlib.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_videostab2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ts2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_superres2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_stitching2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_contrib2413d.lib;winmm.lib;imm32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_nonfree2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ocl2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_gpu2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_photo2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_objdetect2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_legacy2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_video2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ml2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_calib3d2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_features2d2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_highgui2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_imgproc2413d.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_flann2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_core2413d.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyWorks/github/dlib/build/examples/Debug/facetracker.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyWorks/github/dlib/build/examples/Debug/facetracker.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dlib\Release\dlib.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_videostab2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ts2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_superres2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_stitching2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_contrib2413.lib;ws2_32.lib;winmm.lib;comctl32.lib;gdi32.lib;imm32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_nonfree2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ocl2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_gpu2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_photo2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_objdetect2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_legacy2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_video2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ml2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_calib3d2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_features2d2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_highgui2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_imgproc2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_flann2413.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_core2413.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyWorks/github/dlib/build/examples/Release/facetracker.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyWorks/github/dlib/build/examples/Release/facetracker.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dlib\MinSizeRel\dlib.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_videostab2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ts2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_superres2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_stitching2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_contrib2413d.lib;winmm.lib;imm32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_nonfree2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ocl2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_gpu2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_photo2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_objdetect2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_legacy2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_video2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ml2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_calib3d2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_features2d2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_highgui2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_imgproc2413d.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_flann2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_core2413d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyWorks/github/dlib/build/examples/MinSizeRel/facetracker.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyWorks/github/dlib/build/examples/MinSizeRel/facetracker.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DLIB_HAVE_SSE2;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\face\opencv2.4\build\include;D:\face\opencv2.4\build\include\opencv;D:\MyWorks\github\dlib\dlib\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dlib\RelWithDebInfo\dlib.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_videostab2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ts2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_superres2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_stitching2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_contrib2413d.lib;winmm.lib;imm32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_nonfree2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ocl2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_gpu2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_photo2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_objdetect2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_legacy2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_video2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_ml2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_calib3d2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_features2d2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_highgui2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_imgproc2413d.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_flann2413d.lib;D:\face\opencv2.4\build\x86\vc14\lib\opencv_core2413d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyWorks/github/dlib/build/examples/RelWithDebInfo/facetracker.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyWorks/github/dlib/build/examples/RelWithDebInfo/facetracker.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\MyWorks\github\dlib\build\ZERO_CHECK.vcxproj">
+      <Project>{4924518B-A406-3AB6-A68F-A005C4CC333B}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\MyWorks\github\dlib\build\dlib\dlib.vcxproj">
+      <Project>{77FB6098-881E-3468-A2B7-DF77A69631A1}</Project>
+      <Name>dlib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="facetracker\CLM.cc" />
+    <ClCompile Include="facetracker\face_tracker.cc" />
+    <ClCompile Include="facetracker\FCheck.cc" />
+    <ClCompile Include="facetracker\FDet.cc" />
+    <ClCompile Include="facetracker\IO.cc" />
+    <ClCompile Include="facetracker\Patch.cc" />
+    <ClCompile Include="facetracker\PAW.cc" />
+    <ClCompile Include="facetracker\PDM.cc" />
+    <ClCompile Include="facetracker\Tracker.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="facetracker\CLM.h" />
+    <ClInclude Include="facetracker\FCheck.h" />
+    <ClInclude Include="facetracker\FDet.h" />
+    <ClInclude Include="facetracker\IO.h" />
+    <ClInclude Include="facetracker\Patch.h" />
+    <ClInclude Include="facetracker\PAW.h" />
+    <ClInclude Include="facetracker\PDM.h" />
+    <ClInclude Include="facetracker\Tracker.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
