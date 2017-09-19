@@ -106,14 +106,23 @@ int Tracker::Track(cv::Mat im,vector<int> &wSize, const int  fpd,
 	  R = this->ReDetect(gray_); 
 	  gen = false;
   }
-  if((R.width == 0) || (R.height == 0)){_frame = -1; return -1;}
+  if((R.width == 0) || (R.height == 0))
+  {
+	  _frame = -1; 
+	  return -1;
+  }
   _frame++;
-  if(gen){
+  if(gen)
+  {
     this->InitShape(R,_shape);
     _clm._pdm.CalcParams(_shape,_clm._plocal,_clm._pglobl);
-  }else{
+  }
+  else
+  {
     double tx = R.x - _rect.x,ty = R.y - _rect.y;
-    _clm._pglobl.db(4,0) += tx; _clm._pglobl.db(5,0) += ty; rsize = false;
+    _clm._pglobl.db(4,0) += tx;
+	_clm._pglobl.db(5,0) += ty;
+	rsize = false;
   }
   _clm.Fit(gray_,wSize,nIter,clamp,fTol);
   _clm._pdm.CalcShape2D(_shape,_clm._plocal,_clm._pglobl);
