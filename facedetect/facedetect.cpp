@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 	
 	deserialize(shape_model) >> sp;
 
-	string img_path = "1.jpg";
+	string img_path = "timg.jpg";
 	array2d<rgb_pixel> img;
 	load_image(img, img_path);
 	cv::Mat face = cv::imread(img_path);
